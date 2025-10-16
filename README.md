@@ -1,6 +1,6 @@
 # 🕹️ Flappy Bird - Python & Pygame
 
-A simple **Flappy Bird clone** built using **Python** and **Pygame**.
+A simple **Flappy Bird game** built using **Python** and **Pygame**.
 
 ---
 
