@@ -4,47 +4,85 @@ A simple **Flappy Bird clone** built using **Python** and **Pygame**.
 
 ---
 
-## 🎮 Features
-- Realistic bird physics 🐦
-- Dynamic pipe generation 🌿
-- Day-Night background switching 🌞🌙
-- Level progression with sound effects 🔊
-- Score tracking and game over screen 💯
+🌟 Features
 
----
+🎨 Interactive Main Menu with animated title and background
 
-## 🧩 Controls
-- **SPACE** → Jump / Fly  
-- **ESC** → Quit
+🎵 Soft background music that plays continuously during gameplay
 
----
+🌄 Dynamic Day–Night background transition
 
-## 🧰 Requirements
-Make sure Python and Pygame are installed.
+🐦 Smooth Bird Physics with flap and fall motion
 
-```bash
+🚧 Dynamic pipe generation for endless gameplay
+
+💥 Collision detection, realistic sound effects
+
+💯 Score tracking & restart option
+
+💬 Help/Instructions Screen with aesthetic gradient text
+
+🎮 Controls
+Key	Action
+SPACEBAR	Make the bird flap/fly
+ESC	Quit the game
+Mouse Click	Start / Restart / Navigate menus
+🧰 Requirements
+
+Ensure Python and Pygame are installed:
+
 pip install pygame
 
 ▶️ How to Run
 
-1. Download or clone the repository.
+Download or clone this repository.
 
-2. Open CMD in the project folder.
+Open the project folder in VS Code or terminal.
 
-3. Run:python game.py
+Run the main menu file:
+
+python main.py
+
+
+Click PLAY to start the game.
+Click HELP to view instructions.
+Click EXIT to close the window.
 
 📂 Project Structure
-
-Flappy-Bird-Game/
+FLAPPY BIRD/
 │
-├─ assets/        # Images, sounds
-├─ bird.py        # Bird class
-├─ pipe.py        # Pipe class
-├─ game.py        # Main game file
-├─ README.md      # This file
-├─ .gitignore     # Ignore unnecessary files
+├─ assets/
+│  ├─ sfx/
+│  │  ├─ cracker.wav
+│  │  ├─ dead.wav
+│  │  ├─ flap.wav
+│  │  └─ soft_bg_music.mp3
+│  ├─ bg_day.png
+│  ├─ bg_night.png
+│  ├─ birdup.png
+│  ├─ birddown.png
+│  ├─ ground.png
+│  ├─ pipeup.png
+│  ├─ pipedown.png
+│  └─ font.ttf
+│
+├─ frontend/
+│  ├─ assets/
+│  │  ├─ background.jpg
+│  │  ├─ button.png
+│  │  ├─ logo.png
+│  │  ├─ menu_music.mp3
+│  │  └─ new_image.png
+│  └─ main.py
+│
+├─ bird.py
+├─ pipe.py
+├─ game.py
+├─ README.md
+└─ .gitignore
 
-🏆 Credits
+💖 Credits
 
-Created by Sakshi Singh
-B.Tech | PSIT Kanpur | 2025
+Created by: Sakshi Singh
+🎓 B.Tech | PSIT Kanpur | 2025
+💡 Passionate about AI, Game Development, and Python Programming

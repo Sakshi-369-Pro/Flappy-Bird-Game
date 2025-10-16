@@ -8,6 +8,11 @@ pg.mixer.init()
 
 class Game:
     def __init__(self):  
+        # 🔊 Soft continuous background music
+        pg.mixer.music.load("assets/sfx/soft_bg_music.mp3")  # Path to your sound file
+        pg.mixer.music.set_volume(0.15)  # 0.0 to 1.0 (adjust for softness)
+        pg.mixer.music.play(-1)  # -1 means loop forever
+
         # Fullscreen setup
         self.win = pg.display.set_mode((0, 0), pg.FULLSCREEN)
         self.width, self.height = self.win.get_size()
@@ -51,9 +56,8 @@ class Game:
         # Ground images (scaled to full width but half height)
         self.ground_img = pg.image.load("assets/ground.png").convert()
         original_ground_height = self.ground_img.get_height()
-        ground_height = int(original_ground_height * self.scale_factor * 0.5)  # ⬅️ half height
+        ground_height = int(original_ground_height * self.scale_factor * 0.5)
         self.ground_img = pg.transform.scale(self.ground_img, (self.width, ground_height))
-
 
         # Two ground images for scrolling
         self.ground1_img = self.ground_img.copy()
@@ -137,17 +141,15 @@ class Game:
             if self.ground2_rect.right < 0:
                 self.ground2_rect.x = self.ground1_rect.right
 
-            # Generate pipes dynamically for fullscreen height
+            # Generate pipes dynamically
             if self.pipe_generate_counter > 80:
                 self.pipes.append(Pipe(self.scale_factor, self.move_speed, self.height))
                 self.pipe_generate_counter = 0
             self.pipe_generate_counter += 1
 
-            # Update pipes
             for pipe in self.pipes:
                 pipe.update(dt)
 
-            # Score and day-night
             if len(self.pipes) != 0:
                 if self.pipes[0].rect_up.right < 0:
                     self.pipes.pop(0)
@@ -157,7 +159,6 @@ class Game:
                         self.next_milestone += 25
                         self.is_day = not self.is_day
 
-            # Smooth transition
             target = 0 if self.is_day else 1
             speed = 0.3
             if self.bg_transition < target:
@@ -168,7 +169,6 @@ class Game:
         self.bird.update(dt)
 
     def drawEverything(self):
-        # Blend background
         blended_bg = pg.Surface(self.bg_day.get_size()).convert()
         blended_bg.blit(self.bg_day, (0, 0))
         night_overlay = self.bg_night.copy()
@@ -176,21 +176,17 @@ class Game:
         blended_bg.blit(night_overlay, (0, 0))
         self.win.blit(blended_bg, (0, 0))
 
-        # Pipes
         for pipe in self.pipes:
             pipe.drawPipe(self.win)
-        # Ground
+
         self.win.blit(self.ground1_img, self.ground1_rect)
         self.win.blit(self.ground2_img, self.ground2_rect)
-        # Bird
         self.win.blit(self.bird.image, self.bird.rect)
 
-        # Score
         font = pg.font.SysFont("Arial", 36, bold=True)
         score_text = font.render(f"SCORE: {self.score}", True, (0, 0, 0))  
         self.win.blit(score_text, (20, 20)) 
 
-        # Buttons
         if not self.is_game_started:
             pg.draw.rect(self.win, (255, 255, 0), self.start_rect.inflate(40, 20), border_radius=10)
             self.win.blit(self.start_img, self.start_rect)
@@ -199,6 +195,5 @@ class Game:
             self.win.blit(self.restart_img, self.restart_rect)
 
 
-# Run game
 if __name__ == "__main__":
     Game()
