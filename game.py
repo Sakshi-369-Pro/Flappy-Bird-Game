@@ -9,7 +9,7 @@ pg.mixer.init()
 class Game:
     def __init__(self):  
         # 🔊 Soft continuous background music
-        pg.mixer.music.load("assets/sfx/soft_bg_music.mp3")  # Path to your sound file
+        pg.mixer.music.load("assets/sfx/soft_bg_music.wav")  # Path to your sound file
         pg.mixer.music.set_volume(0.15)  # 0.0 to 1.0 (adjust for softness)
         pg.mixer.music.play(-1)  # -1 means loop forever
 
